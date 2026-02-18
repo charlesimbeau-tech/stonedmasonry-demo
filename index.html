@@ -565,6 +565,29 @@
       .trust { gap: 2rem; padding: 2rem 1.5rem; }
       footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
       .services-header { flex-direction: column; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-form { padding: 1.5rem; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+      .hero p { font-size: 0.95rem; }
+      .hero-badge { font-size: 0.62rem; }
+      .portfolio-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 6px; }
+      .portfolio-item { height: 220px; }
+      .portfolio-item img { height: 100%; }
+      .contact-strip { gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 3rem 1rem; }
+      .hero { padding: 6rem 1rem 4rem; }
+      nav { padding: 0.8rem 1rem; }
+      nav.scrolled { padding: 0.6rem 1rem; }
+      .trust { gap: 1.25rem; padding: 1.5rem 1rem; }
+      .trust-item { font-size: 0.68rem; }
+      .why-content { padding: 0; }
+      .why-img { height: 220px; }
+      .steps { grid-template-columns: 1fr; gap: 2rem; }
+      .testimonials { padding: 3rem 1.5rem; }
+      footer { padding: 1.5rem 1rem; }
     }
   </style>
 </head>
