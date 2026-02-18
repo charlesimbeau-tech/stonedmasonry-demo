@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stoned Masonry – Stone Work & Masonry Restoration</title>
-  <meta name="description" content="Stoned Masonry Restoration delivers exceptional custom stonework and expert historic restoration with a focus on timeless quality and artistry." />
+  <title>Stoned Masonry – Custom Stone Work & Historic Masonry Restoration</title>
+  <meta name="description" content="Stoned Masonry Restoration delivers exceptional custom stonework and expert historic restoration across Ontario. Free estimates. 20+ years experience." />
+  <meta name="keywords" content="masonry, stonework, stone restoration, historic restoration, repointing, tuckpointing, Ontario masonry, custom stonework" />
+  <link rel="canonical" href="https://stonedmasonry.ca/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Stoned Masonry – Custom Stone Work & Historic Restoration" />
+  <meta property="og:description" content="Exceptional custom stonework and expert historic restoration. 20+ years of unmatched craftsmanship." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stonedmasonry.ca/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=1200&q=80" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Stoned Masonry Restoration",
+    "description": "Custom stonework and expert historic masonry restoration.",
+    "url": "https://stonedmasonry.ca",
+    "email": "info@stonedmasonry.ca",
+    "areaServed": "Ontario, Canada",
+    "priceRange": "$$",
+    "knowsAbout": ["Masonry", "Stone Restoration", "Historic Preservation", "Repointing", "Custom Stonework"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,6 +60,15 @@
       overflow-x: hidden;
     }
 
+    /* ── SKIP LINK (a11y) ────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100%; left: 0;
+      background: var(--warm); color: var(--stone);
+      padding: 0.5rem 1rem; z-index: 200;
+      font-weight: 600; text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+
     /* ── NAV ─────────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -40,25 +77,27 @@
       background: rgba(28, 26, 23, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(196, 162, 101, 0.2);
+      transition: padding 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      padding: 0.8rem 4rem;
+      background: rgba(28, 26, 23, 0.97);
     }
 
-    .nav-logo {
-      display: flex; flex-direction: column;
-    }
+    .nav-logo { display: flex; flex-direction: column; }
     .nav-logo .name {
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem; font-weight: 700;
-      color: var(--warm);
-      letter-spacing: 0.02em;
+      color: var(--warm); letter-spacing: 0.02em;
     }
     .nav-logo .tagline {
       font-size: 0.65rem; color: rgba(255,255,255,0.45);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      margin-top: 1px;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-top: 1px;
     }
 
     .nav-links {
       display: flex; gap: 2.5rem; list-style: none;
+      align-items: center;
     }
     .nav-links a {
       text-decoration: none;
@@ -77,7 +116,20 @@
       font-weight: 600 !important;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--warm-lt) !important; color: var(--stone) !important; }
+    .nav-cta:hover { background: var(--warm-lt) !important; }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--warm); transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ── HERO ────────────────────────────────────────────── */
     .hero {
@@ -107,10 +159,7 @@
       line-height: 1.1; max-width: 800px;
       margin-bottom: 1.5rem;
     }
-
-    .hero h1 em {
-      font-style: italic; color: var(--warm);
-    }
+    .hero h1 em { font-style: italic; color: var(--warm); }
 
     .hero p {
       font-size: 1.1rem; color: rgba(255,255,255,0.72);
@@ -118,9 +167,7 @@
       margin-bottom: 2.5rem;
     }
 
-    .hero-actions {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .btn-primary {
       background: var(--warm); color: var(--stone);
@@ -128,7 +175,7 @@
       padding: 0.9rem 2.2rem; border-radius: 2px;
       text-decoration: none; letter-spacing: 0.04em;
       transition: background 0.2s, transform 0.15s;
-      display: inline-block;
+      display: inline-block; border: none; cursor: pointer;
     }
     .btn-primary:hover { background: var(--warm-lt); transform: translateY(-1px); }
 
@@ -178,6 +225,34 @@
       color: var(--text);
     }
 
+    /* ── SCROLL REVEAL ───────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* ── TRUST BADGES ────────────────────────────────────── */
+    .trust {
+      background: var(--stone);
+      padding: 2.5rem 4rem;
+      display: flex; justify-content: center; gap: 4rem;
+      align-items: center; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .trust-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(196,162,101,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+
     /* ── SERVICES ────────────────────────────────────────── */
     .services { background: var(--white); }
     .services-header {
@@ -192,15 +267,13 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5px;
-      background: rgba(0,0,0,0.08);
+      gap: 1.5px; background: rgba(0,0,0,0.08);
     }
 
     .service-card {
       background: var(--white);
       padding: 2.5rem 2rem;
       transition: background 0.2s;
-      cursor: default;
     }
     .service-card:hover { background: var(--cream); }
 
@@ -208,8 +281,7 @@
       width: 44px; height: 44px;
       border: 1px solid var(--warm);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
+      margin-bottom: 1.5rem; font-size: 1.2rem;
     }
 
     .service-card h3 {
@@ -217,10 +289,8 @@
       font-size: 1.2rem; font-weight: 600;
       color: var(--text); margin-bottom: 0.75rem;
     }
-
     .service-card p {
-      font-size: 0.9rem; color: var(--text-mid);
-      line-height: 1.7;
+      font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;
     }
 
     /* ── WHY US ──────────────────────────────────────────── */
@@ -244,16 +314,13 @@
     }
 
     .why-points { display: flex; flex-direction: column; gap: 1.25rem; }
-    .why-point {
-      display: flex; gap: 1rem; align-items: flex-start;
-    }
+    .why-point { display: flex; gap: 1rem; align-items: flex-start; }
     .why-point .dot {
       width: 8px; height: 8px; min-width: 8px;
       background: var(--warm); margin-top: 6px;
     }
     .why-point p {
-      font-size: 0.9rem; color: rgba(255,255,255,0.65);
-      line-height: 1.65;
+      font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.65;
     }
     .why-point strong { color: var(--warm-lt); font-weight: 600; }
 
@@ -276,17 +343,12 @@
       gap: 8px;
     }
 
-    .portfolio-item {
-      overflow: hidden; position: relative;
-      cursor: pointer;
-    }
-
+    .portfolio-item { overflow: hidden; position: relative; cursor: pointer; }
     .portfolio-item:first-child { grid-row: 1 / 3; }
 
     .portfolio-item img {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
+      transition: transform 0.4s ease; display: block;
     }
     .portfolio-item:hover img { transform: scale(1.05); }
 
@@ -333,53 +395,112 @@
     }
     .step p { font-size: 0.88rem; color: var(--text-lt); line-height: 1.65; }
 
-    /* ── TESTIMONIAL ─────────────────────────────────────── */
-    .testimonial {
+    /* ── TESTIMONIALS ────────────────────────────────────── */
+    .testimonials {
       background: var(--stone-mid);
       text-align: center; padding: 5rem 4rem;
     }
-    .testimonial blockquote {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-      font-style: italic; color: var(--white);
-      max-width: 800px; margin: 0 auto 1.5rem;
-      line-height: 1.55;
+    .testimonials-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; max-width: 1000px; margin: 0 auto;
     }
-    .testimonial cite {
-      font-size: 0.82rem; color: var(--warm);
-      letter-spacing: 0.1em; text-transform: uppercase;
+    .test-card {
+      text-align: left;
+      border-left: 2px solid var(--warm);
+      padding-left: 1.5rem;
+    }
+    .test-card .stars { color: var(--warm); font-size: 0.85rem; margin-bottom: 0.75rem; text-align: left; }
+    .test-card blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-style: italic;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6; margin-bottom: 1rem;
+    }
+    .test-card cite {
+      font-size: 0.78rem; color: var(--warm);
+      letter-spacing: 0.08em; text-transform: uppercase;
       font-style: normal;
     }
-    .stars { color: var(--warm); font-size: 1rem; margin-bottom: 1.5rem; }
 
-    /* ── CTA ─────────────────────────────────────────────── */
+    /* ── CTA + FORM ──────────────────────────────────────── */
     .cta {
       background: var(--cream);
-      text-align: center; padding: 6rem 4rem;
+      padding: 6rem 4rem;
       border-top: 1px solid rgba(0,0,0,0.08);
     }
-    .cta h2 { margin-bottom: 1rem; }
-    .cta p {
-      color: var(--text-mid); max-width: 480px;
-      margin: 0 auto 2.5rem; line-height: 1.7;
+    .cta-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; max-width: 1100px; margin: 0 auto;
+      align-items: start;
+    }
+    .cta-text .label { margin-bottom: 0.75rem; }
+    .cta-text h2 { margin-bottom: 1rem; }
+    .cta-text p {
+      color: var(--text-mid); line-height: 1.7;
+      margin-bottom: 2rem; font-size: 1rem;
     }
 
     .contact-strip {
-      display: flex; justify-content: center; gap: 3rem;
-      margin-top: 3rem; flex-wrap: wrap;
+      display: flex; flex-direction: column; gap: 1.25rem;
     }
     .contact-item {
-      display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+      display: flex; align-items: center; gap: 0.75rem;
     }
-    .contact-item .ci-label {
-      font-size: 0.7rem; letter-spacing: 0.12em;
+    .ci-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(196,162,101,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+    .ci-info { display: flex; flex-direction: column; }
+    .ci-info .ci-label {
+      font-size: 0.68rem; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--text-lt);
     }
-    .contact-item .ci-val {
+    .ci-info .ci-val {
       font-size: 0.95rem; color: var(--text);
       font-weight: 500; text-decoration: none;
     }
-    .contact-item .ci-val:hover { color: var(--warm); }
+    .ci-info .ci-val:hover { color: var(--warm); }
+
+    .cta-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .cta-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--text); margin-bottom: 1.5rem;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .cta-form input,
+    .cta-form select,
+    .cta-form textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .cta-form input:focus,
+    .cta-form select:focus,
+    .cta-form textarea:focus {
+      border-color: var(--warm);
+    }
+    .cta-form textarea {
+      resize: vertical; min-height: 100px;
+      margin-bottom: 0.75rem;
+    }
+    .cta-form select { margin-bottom: 0.75rem; }
+    .cta-form .btn-primary {
+      width: 100%; text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
 
     /* ── FOOTER ──────────────────────────────────────────── */
     footer {
@@ -392,9 +513,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem; color: var(--warm); font-weight: 700;
     }
-    footer p {
-      font-size: 0.78rem; color: rgba(255,255,255,0.35);
-    }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a {
       font-size: 0.78rem; color: rgba(255,255,255,0.4);
@@ -402,10 +521,35 @@
     }
     .footer-links a:hover { color: var(--warm); }
 
+    /* ── SCROLL TO TOP ───────────────────────────────────── */
+    .scroll-top {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--warm); color: var(--stone);
+      border: none; cursor: pointer;
+      font-size: 1.1rem; display: flex;
+      align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 99;
+    }
+    .scroll-top.show { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { transform: translateY(-2px); }
+
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      nav.scrolled { padding: 0.7rem 1.5rem; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+        background: var(--stone);
+        flex-direction: column; padding: 5rem 2rem 2rem;
+        gap: 1.5rem; transition: right 0.3s ease;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 1rem; color: rgba(255,255,255,0.8); }
+
       section { padding: 4rem 1.5rem; }
       .hero { padding: 7rem 1.5rem 5rem; }
       .hero-stats { position: static; margin-top: 3rem; gap: 2rem; }
@@ -416,19 +560,27 @@
       .portfolio-item:first-child { grid-row: auto; }
       .steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
       .steps::before { display: none; }
-      footer { flex-direction: column; text-align: center; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .trust { gap: 2rem; padding: 2rem 1.5rem; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
       .services-header { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
+  <a href="#main" class="skip-link">Skip to main content</a>
+
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Main navigation">
     <div class="nav-logo">
       <span class="name">Stoned Masonry</span>
       <span class="tagline">Stone Work & Restoration</span>
     </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
@@ -438,208 +590,250 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="main">
     <div>
-      <div class="hero-badge">✦ Established Craftsmen · Serving Canada</div>
+      <div class="hero-badge">&#10022; Established Craftsmen &middot; Serving Ontario &amp; Beyond</div>
       <h1>Stone that tells a story.<br><em>Built to last centuries.</em></h1>
-      <p>From custom architectural stonework to meticulous historic restoration — we bring unmatched craftsmanship to every project, large or small.</p>
+      <p>From custom architectural stonework to meticulous historic restoration &mdash; we bring unmatched craftsmanship to every project, large or small.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Request a Free Estimate</a>
         <a href="#portfolio" class="btn-outline">View Our Work</a>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <span class="num">20+</span>
-        <span class="lbl">Years Experience</span>
-      </div>
-      <div class="stat">
-        <span class="num">500+</span>
-        <span class="lbl">Projects Completed</span>
-      </div>
-      <div class="stat">
-        <span class="num">100%</span>
-        <span class="lbl">Satisfaction Guarantee</span>
-      </div>
+      <div class="stat"><span class="num">20+</span><span class="lbl">Years Experience</span></div>
+      <div class="stat"><span class="num">500+</span><span class="lbl">Projects Completed</span></div>
+      <div class="stat"><span class="num">100%</span><span class="lbl">Satisfaction Guarantee</span></div>
     </div>
   </section>
 
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="trust-item"><div class="trust-icon">&#9878;</div>Fully Licensed</div>
+    <div class="trust-item"><div class="trust-icon">&#9733;</div>5-Star Rated</div>
+    <div class="trust-item"><div class="trust-icon">&#128736;</div>Insured &amp; Bonded</div>
+    <div class="trust-item"><div class="trust-icon">&#127968;</div>Heritage Certified</div>
+    <div class="trust-item"><div class="trust-icon">&#9989;</div>Free Estimates</div>
+  </div>
+
   <!-- SERVICES -->
-  <section class="services" id="services">
+  <section class="services reveal" id="services">
     <div class="services-header">
       <div>
         <div class="label">What We Do</div>
         <h2>Expert Masonry,<br>Every Project</h2>
       </div>
-      <p>From one-of-a-kind custom designs to the careful preservation of heritage structures — we handle the full range of stonework with the same commitment to quality.</p>
+      <p>From one-of-a-kind custom designs to the careful preservation of heritage structures &mdash; we handle the full range of stonework with the same commitment to quality.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">🏛</div>
+        <div class="service-icon">&#127963;</div>
         <h3>Historic Restoration</h3>
         <p>Faithful restoration of heritage stone structures using period-appropriate materials and traditional techniques that preserve architectural integrity.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🪨</div>
+        <div class="service-icon">&#129704;</div>
         <h3>Custom Stone Design</h3>
-        <p>Bespoke stonework designed and crafted to your specifications — feature walls, fireplaces, entryways, patios, and architectural accents.</p>
+        <p>Bespoke stonework designed and crafted to your specifications &mdash; feature walls, fireplaces, entryways, patios, and architectural accents.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🏠</div>
-        <h3>Foundation & Structural</h3>
+        <div class="service-icon">&#127968;</div>
+        <h3>Foundation &amp; Structural</h3>
         <p>Foundation repairs, retaining walls, and structural masonry work built to code and engineered to stand for generations.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <h3>Repointing & Repair</h3>
+        <div class="service-icon">&#128295;</div>
+        <h3>Repointing &amp; Repair</h3>
         <p>Mortar repointing, crack repair, tuckpointing, and weatherproofing to restore structural integrity and stop water infiltration.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🌿</div>
+        <div class="service-icon">&#127807;</div>
         <h3>Landscaping Stonework</h3>
         <p>Natural stone pathways, garden walls, steps, and outdoor living spaces that blend seamlessly with your landscape.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🏢</div>
+        <div class="service-icon">&#127970;</div>
         <h3>Commercial Masonry</h3>
-        <p>Full commercial and institutional masonry services — facades, cladding, entryways, and restoration for properties of any scale.</p>
+        <p>Full commercial and institutional masonry services &mdash; facades, cladding, entryways, and restoration for properties of any scale.</p>
       </div>
     </div>
   </section>
 
   <!-- WHY US -->
-  <section class="why">
-    <div class="why-img"></div>
+  <section class="why reveal">
+    <div class="why-img" role="img" aria-label="Craftsman working on stone restoration"></div>
     <div class="why-content">
       <div class="label">Why Choose Us</div>
       <h2>Craftsmanship That Speaks for Itself</h2>
-      <p>We don't cut corners. Every project — whether a single step repair or a full heritage restoration — receives the same level of care, precision, and pride in workmanship that has defined our reputation for over two decades.</p>
+      <p>We don't cut corners. Every project &mdash; whether a single step repair or a full heritage restoration &mdash; receives the same level of care, precision, and pride in workmanship that has defined our reputation for over two decades.</p>
       <div class="why-points">
-        <div class="why-point">
-          <div class="dot"></div>
-          <p><strong>Certified & Insured</strong> — Fully licensed masonry contractors with comprehensive liability coverage on every job.</p>
-        </div>
-        <div class="why-point">
-          <div class="dot"></div>
-          <p><strong>Historic Preservation Specialists</strong> — Experience with heritage-designated buildings and period restoration requirements.</p>
-        </div>
-        <div class="why-point">
-          <div class="dot"></div>
-          <p><strong>Premium Materials Only</strong> — We source high-grade natural stone and match mortars precisely for structural and aesthetic longevity.</p>
-        </div>
-        <div class="why-point">
-          <div class="dot"></div>
-          <p><strong>Clean, Respectful Worksites</strong> — We treat your property with care and leave every job site clean at the end of each day.</p>
-        </div>
-        <div class="why-point">
-          <div class="dot"></div>
-          <p><strong>Transparent Pricing</strong> — Detailed written quotes with no surprise costs. What we quote is what you pay.</p>
-        </div>
+        <div class="why-point"><div class="dot"></div><p><strong>Certified &amp; Insured</strong> &mdash; Fully licensed masonry contractors with comprehensive liability coverage on every job.</p></div>
+        <div class="why-point"><div class="dot"></div><p><strong>Historic Preservation Specialists</strong> &mdash; Experience with heritage-designated buildings and period restoration requirements.</p></div>
+        <div class="why-point"><div class="dot"></div><p><strong>Premium Materials Only</strong> &mdash; We source high-grade natural stone and match mortars precisely for structural and aesthetic longevity.</p></div>
+        <div class="why-point"><div class="dot"></div><p><strong>Clean, Respectful Worksites</strong> &mdash; We treat your property with care and leave every job site clean at the end of each day.</p></div>
+        <div class="why-point"><div class="dot"></div><p><strong>Transparent Pricing</strong> &mdash; Detailed written quotes with no surprise costs. What we quote is what you pay.</p></div>
       </div>
     </div>
   </section>
 
   <!-- PORTFOLIO -->
-  <section class="portfolio" id="portfolio">
+  <section class="portfolio reveal" id="portfolio">
     <div class="portfolio-header">
       <div>
         <div class="label">Our Work</div>
         <h2>Recent Projects</h2>
       </div>
-      <a href="#">View Full Portfolio →</a>
+      <a href="#">View Full Portfolio &rarr;</a>
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <img src="https://images.unsplash.com/photo-1565117607386-af35a8b32e73?w=900&q=80" alt="Historic stone restoration" />
-        <div class="overlay"><span>Heritage Church Restoration · Ottawa</span></div>
+        <img src="https://images.unsplash.com/photo-1565117607386-af35a8b32e73?w=900&q=80" alt="Heritage church stone restoration in Ottawa" loading="lazy" />
+        <div class="overlay"><span>Heritage Church Restoration &middot; Ottawa</span></div>
       </div>
       <div class="portfolio-item">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Custom stone fireplace" />
-        <div class="overlay"><span>Custom Fireplace · Toronto</span></div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Custom stone fireplace in Toronto home" loading="lazy" />
+        <div class="overlay"><span>Custom Fireplace &middot; Toronto</span></div>
       </div>
       <div class="portfolio-item">
-        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Stone retaining wall" />
-        <div class="overlay"><span>Garden Retaining Wall · Hamilton</span></div>
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Natural stone retaining wall in Hamilton" loading="lazy" />
+        <div class="overlay"><span>Garden Retaining Wall &middot; Hamilton</span></div>
       </div>
       <div class="portfolio-item">
-        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="Stone pathway" />
-        <div class="overlay"><span>Natural Stone Pathway · Kingston</span></div>
+        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="Natural stone pathway in Kingston" loading="lazy" />
+        <div class="overlay"><span>Natural Stone Pathway &middot; Kingston</span></div>
       </div>
       <div class="portfolio-item">
-        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80" alt="Stone facade" />
-        <div class="overlay"><span>Commercial Facade · London ON</span></div>
+        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80" alt="Commercial stone facade in London Ontario" loading="lazy" />
+        <div class="overlay"><span>Commercial Facade &middot; London ON</span></div>
       </div>
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section class="process" id="process">
+  <section class="process reveal" id="process">
     <div class="label" style="justify-content:center; margin-bottom:0.75rem;">How It Works</div>
     <h2>Simple. Transparent. Done Right.</h2>
     <br/>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h4>Free Consultation</h4>
-        <p>We visit your site, assess the scope, and discuss your vision. No obligation, no pressure.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h4>Detailed Quote</h4>
-        <p>You receive a full written estimate within 48 hours — itemized, clear, and guaranteed.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h4>Expert Execution</h4>
-        <p>Our crew arrives on time, works cleanly, and keeps you informed throughout the project.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h4>Final Walkthrough</h4>
-        <p>We walk through the completed work with you. You're satisfied before we leave. Guaranteed.</p>
-      </div>
+      <div class="step"><div class="step-num">01</div><h4>Free Consultation</h4><p>We visit your site, assess the scope, and discuss your vision. No obligation, no pressure.</p></div>
+      <div class="step"><div class="step-num">02</div><h4>Detailed Quote</h4><p>You receive a full written estimate within 48 hours &mdash; itemized, clear, and guaranteed.</p></div>
+      <div class="step"><div class="step-num">03</div><h4>Expert Execution</h4><p>Our crew arrives on time, works cleanly, and keeps you informed throughout the project.</p></div>
+      <div class="step"><div class="step-num">04</div><h4>Final Walkthrough</h4><p>We walk through the completed work with you. Satisfied before we leave. Guaranteed.</p></div>
     </div>
   </section>
 
-  <!-- TESTIMONIAL -->
-  <div class="testimonial">
-    <div class="stars">★★★★★</div>
-    <blockquote>"They restored the original stone facade on our 1890s building and the result was beyond anything we expected. You genuinely cannot tell where the original ends and the restoration begins."</blockquote>
-    <cite>— Margaret C., Heritage Property Owner, Toronto</cite>
+  <!-- TESTIMONIALS -->
+  <div class="testimonials reveal">
+    <div class="label" style="justify-content:center; margin-bottom:2.5rem; color:var(--warm);">What Our Clients Say</div>
+    <div class="testimonials-grid">
+      <div class="test-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;They restored the original stone facade on our 1890s building and the result was beyond anything we expected. You genuinely cannot tell where the original ends and the restoration begins.&rdquo;</blockquote>
+        <cite>&mdash; Margaret C., Heritage Property Owner, Toronto</cite>
+      </div>
+      <div class="test-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Incredibly professional from quote to completion. They rebuilt our crumbling foundation wall in half the time we were quoted by another company &mdash; and for less. Couldn&rsquo;t be happier.&rdquo;</blockquote>
+        <cite>&mdash; David R., Homeowner, Ottawa</cite>
+      </div>
+    </div>
   </div>
 
-  <!-- CTA -->
-  <section class="cta" id="contact">
-    <div class="label" style="justify-content:center; margin-bottom:0.75rem;">Get Started</div>
-    <h2>Ready to Begin Your Project?</h2>
-    <p>Whether it's a repair, a restoration, or something completely custom — we'd love to hear about it. Estimates are always free.</p>
-    <a href="tel:+1-000-000-0000" class="btn-primary">Call for a Free Estimate</a>
-    <div class="contact-strip">
-      <div class="contact-item">
-        <span class="ci-label">Phone</span>
-        <a class="ci-val" href="tel:+1-000-000-0000">(000) 000-0000</a>
+  <!-- CTA + FORM -->
+  <section class="cta reveal" id="contact">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <div class="label">Get Started</div>
+        <h2>Ready to Begin<br>Your Project?</h2>
+        <p>Whether it&rsquo;s a repair, a restoration, or something completely custom &mdash; we&rsquo;d love to hear about it. Estimates are always free.</p>
+        <div class="contact-strip">
+          <div class="contact-item">
+            <div class="ci-icon">&#9742;</div>
+            <div class="ci-info"><span class="ci-label">Phone</span><a class="ci-val" href="tel:+1-000-000-0000">(000) 000-0000</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">&#9993;</div>
+            <div class="ci-info"><span class="ci-label">Email</span><a class="ci-val" href="mailto:info@stonedmasonry.ca">info@stonedmasonry.ca</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">&#128205;</div>
+            <div class="ci-info"><span class="ci-label">Service Area</span><span class="ci-val">Ontario &amp; surrounding regions</span></div>
+          </div>
+        </div>
       </div>
-      <div class="contact-item">
-        <span class="ci-label">Email</span>
-        <a class="ci-val" href="mailto:info@stonedmasonry.ca">info@stonedmasonry.ca</a>
-      </div>
-      <div class="contact-item">
-        <span class="ci-label">Service Area</span>
-        <span class="ci-val">Ontario & surrounding regions</span>
-      </div>
+      <form class="cta-form" onsubmit="event.preventDefault(); alert('Thank you! We\'ll be in touch within 24 hours.');">
+        <h3>Request a Free Estimate</h3>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Full Name" required aria-label="Full Name" />
+          <input type="tel" name="phone" placeholder="Phone Number" aria-label="Phone Number" />
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address" style="margin-bottom:0.75rem" />
+        <select name="service" aria-label="Service Type">
+          <option value="" disabled selected>Service Type</option>
+          <option>Historic Restoration</option>
+          <option>Custom Stone Design</option>
+          <option>Foundation &amp; Structural</option>
+          <option>Repointing &amp; Repair</option>
+          <option>Landscaping Stonework</option>
+          <option>Commercial Masonry</option>
+          <option>Other</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your project..." aria-label="Project Details"></textarea>
+        <button type="submit" class="btn-primary">Send Request</button>
+      </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Stoned Masonry</div>
-    <p>© 2026 Stoned Masonry Restoration. All rights reserved.</p>
+    <p>&copy; 2026 Stoned Masonry Restoration. All rights reserved.</p>
     <div class="footer-links">
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </div>
   </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" aria-label="Scroll to top">&#8593;</button>
+
+  <script>
+    // Hamburger menu
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        links.classList.remove('open');
+      });
+    });
+
+    // Nav shrink on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Scroll to top
+    const scrollBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 
 </body>
 </html>
